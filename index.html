@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Party Pop Hub - Birthday & Party Decor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffe4e1;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #ff4081;
+            color: white;
+            padding: 20px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background: #ff80ab;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        section {
+            padding: 20px;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .gallery img, .shop img {
+            width: 200px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        footer {
+            background-color: #ff4081;
+            color: white;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+    <script>
+        function showPage(pageId) {
+            let sections = document.querySelectorAll('section');
+            sections.forEach(section => section.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        Party Pop Hub - Your Celebration Partner 🎉
+    </header>
+    <nav>
+        <a onclick="showPage('about')">About Us</a>
+        <a onclick="showPage('gallery')">Gallery</a>
+        <a onclick="showPage('packages')">Packages</a>
+        <a onclick="showPage('shop')">DIY Decor</a>
+    </nav>
+    
+    <section id="about" class="active">
+        <h2>About Us</h2>
+        <p>🎉 Make Every Birthday Magical! 🎈✨</p>
+        <p>Planning a birthday party for your little one? 🥳 No more last-minute runs for decorations! Party Pop Hub is your one-stop shop for all things party— all-in-one birthday kits, foil balloons, foil curtains, confetti poppers, themed plates & glasses, tiaras, banners, candles, sashes, and more! 🎂🎁</p>
+        <p>📍 Available right here in Honer Aquantis! No need to step out—just message, order, and get it delivered to your doorstep! 🚪🎊</p>
+        <p>💬 DM us for prices & offers! Let’s make birthdays extra special! 🥰🎀</p>
+        <p>✨ We also take orders for complete birthday party decor services! 🎊🎈 Let us set up a magical celebration for you!</p>
+    </section>
+    
+    <section id="gallery">
+        <h2>Recent Decor Gallery</h2>
+        <div class="gallery">
+            <img src="gallery1.jpg" alt="Decor Image 1">
+            <img src="gallery2.jpg" alt="Decor Image 2">
+            <img src="gallery3.jpg" alt="Decor Image 3">
+        </div>
+    </section>
+    
+    <section id="packages">
+        <h2>Our Packages</h2>
+        <p><strong>🎊 Standard Birthday Decor - ₹5,000</strong></p>
+        <p>✅ 2m x 2m foil curtain or wall backdrop, ~50 latex balloons + 4-5 foil balloons, banner, balloon stand, table decor (table not included), tiara/googles/birthday cap for the kid, disposable plates & cups for 10 kids.</p>
+        
+        <p><strong>🎭 Theme-Based Birthday Decor - ₹6,000 onwards</strong></p>
+        <p>Includes everything in Standard, customized with themes like Unicorn, Mermaid, Minions, Mickey, etc.</p>
+        
+        <p><strong>📸 Personalized Birthday Decor - ₹7,000 onwards</strong></p>
+        <p>Includes everything in Theme-Based, plus photo collage, name balloons, custom props.</p>
+        
+        <p><strong>🌿 Outdoor Luxury Decor - ₹15,000 onwards</strong></p>
+        <p>Perfect for lawns or terraces: backdrop ring with drapes, ~100 balloons, birthday props, up to 2 tables decor (tables not included).</p>
+    </section>
+    
+    <section id="shop">
+        <h2>DIY Decor Items</h2>
+        <p>Browse our collection of decor kits and accessories for a perfect DIY party.</p>
+        <div class="shop">
+            <img src="item1.jpg" alt="DIY Decor 1">
+            <img src="item2.jpg" alt="DIY Decor 2">
+            <img src="item3.jpg" alt="DIY Decor 3">
+        </div>
+    </section>
+    
+    <footer>
+        Contact us at: +91 8800331737 | PartyPopHub@gmail.com
+    </footer>
+</body>
+</html>
