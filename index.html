@@ -1,121 +1,435 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Party Pop Hub - Birthday & Party Decor</title>
+    <title>Party Pop Hub - Your Party Decor Partner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #ffe4e1;
-            margin: 0;
-            padding: 0;
-            text-align: center;
-        }
-        header {
-            background-color: #ff4081;
-            color: white;
-            padding: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        nav {
-            background: #ff80ab;
-            padding: 10px;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 18px;
-            cursor: pointer;
-        }
-        section {
-            padding: 20px;
-            display: none;
-        }
-        .active {
-            display: block;
-        }
-        .gallery img, .shop img {
-            width: 200px;
-            height: auto;
-            margin: 10px;
-            border-radius: 10px;
-        }
-        footer {
-            background-color: #ff4081;
-            color: white;
-            padding: 10px;
-            position: relative;
-            bottom: 0;
-            width: 100%;
-        }
+      @font-face {
+        font-family: 'LucideIcons';
+        src: url(https://cdn.jsdelivr.net/npm/lucide-static@latest/font/Lucide.ttf) format('truetype');
+      }
+      .lucide {
+        font-family: 'LucideIcons';
+        font-size: 1.25rem; /* Adjust size as needed */
+        line-height: 1;
+        vertical-align: middle;
+      }
+      /* Style for active nav link */
+      .nav-active {
+        font-weight: 600;
+        color: #ec4899; /* Pink color for active link */
+      }
+      /* Basic styling for better visuals */
+      body {
+        font-family: 'Inter', sans-serif; /* Ensure Inter font */
+      }
+      /* Add smooth transition for background color change */
+      nav a {
+          transition: color 0.3s ease;
+      }
+      /* Custom gradient for hero */
+       .hero-gradient {
+        background: linear-gradient(135deg, #fbcfe8 0%, #fda4af 100%);
+      }
+       /* Custom gradient for package cards */
+      .package-card-gradient {
+        background: linear-gradient(135deg, #ffffff 0%, #fef3c7 100%); /* White to light yellow */
+      }
+      /* Custom gradient for footer */
+       .footer-gradient {
+        background: linear-gradient(135deg, #a855f7 0%, #ec4899 100%); /* Purple to Pink */
+      }
+       /* Animations for sections */
+       @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+       }
+       .fade-in-section {
+           animation: fadeIn 0.8s ease-out forwards;
+       }
+       /* Ensure sections have enough top margin for fixed header */
+       section {
+           padding-top: 80px; /* Adjust based on header height */
+           margin-top: -80px; /* Negative margin to counteract padding */
+       }
+       /* Style for gallery and store items */
+       .item-card {
+           transition: transform 0.3s ease, box-shadow 0.3s ease;
+       }
+       .item-card:hover {
+           transform: translateY(-5px);
+           box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+       }
     </style>
-    <script>
-        function showPage(pageId) {
-            let sections = document.querySelectorAll('section');
-            sections.forEach(section => section.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-        }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
-    <header>
-        Party Pop Hub - Your Celebration Partner 🎉
+<body class="bg-pink-50 text-gray-800">
+
+    <header class="bg-white shadow-md fixed top-0 left-0 right-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#about" class="text-2xl font-bold text-pink-600 hover:text-pink-700 transition duration-300">Party Pop Hub</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="nav-link text-gray-600 hover:text-pink-600">About</a>
+                <a href="#packages" class="nav-link text-gray-600 hover:text-pink-600">Packages</a>
+                <a href="#gallery" class="nav-link text-gray-600 hover:text-pink-600">Gallery</a>
+                <a href="#store" class="nav-link text-gray-600 hover:text-pink-600">DIY Store</a>
+                <a href="#contact" class="nav-link text-gray-600 hover:text-pink-600">Contact</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-700 focus:outline-none">
+                <i class="lucide">menu</i> </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <a href="#about" class="block px-6 py-3 text-gray-600 hover:bg-pink-50 hover:text-pink-600 nav-link">About</a>
+            <a href="#packages" class="block px-6 py-3 text-gray-600 hover:bg-pink-50 hover:text-pink-600 nav-link">Packages</a>
+            <a href="#gallery" class="block px-6 py-3 text-gray-600 hover:bg-pink-50 hover:text-pink-600 nav-link">Gallery</a>
+            <a href="#store" class="block px-6 py-3 text-gray-600 hover:bg-pink-50 hover:text-pink-600 nav-link">DIY Store</a>
+            <a href="#contact" class="block px-6 py-3 text-gray-600 hover:bg-pink-50 hover:text-pink-600 nav-link">Contact</a>
+        </div>
     </header>
-    <nav>
-        <a onclick="showPage('about')">About Us</a>
-        <a onclick="showPage('gallery')">Gallery</a>
-        <a onclick="showPage('packages')">Packages</a>
-        <a onclick="showPage('shop')">DIY Decor</a>
-    </nav>
-    
-    <section id="about" class="active">
-        <h2>About Us</h2>
-        <p>🎉 Make Every Birthday Magical! 🎈✨</p>
-        <p>Planning a birthday party for your little one? 🥳 No more last-minute runs for decorations! Party Pop Hub is your one-stop shop for all things party— all-in-one birthday kits, foil balloons, foil curtains, confetti poppers, themed plates & glasses, tiaras, banners, candles, sashes, and more! 🎂🎁</p>
-        <p>📍 Available right here in Honer Aquantis! No need to step out—just message, order, and get it delivered to your doorstep! 🚪🎊</p>
-        <p>💬 DM us for prices & offers! Let’s make birthdays extra special! 🥰🎀</p>
-        <p>✨ We also take orders for complete birthday party decor services! 🎊🎈 Let us set up a magical celebration for you!</p>
-    </section>
-    
-    <section id="gallery">
-        <h2>Recent Decor Gallery</h2>
-        <div class="gallery">
-            <img src="gallery1.jpg" alt="Decor Image 1">
-            <img src="gallery2.jpg" alt="Decor Image 2">
-            <img src="gallery3.jpg" alt="Decor Image 3">
+
+    <main class="pt-16"> <section id="about" class="min-h-screen flex items-center hero-gradient fade-in-section">
+            <div class="container mx-auto px-6 py-20 text-center md:text-left flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4 leading-tight">
+                        🎉 Party Pop Hub <span class="block text-pink-600">by Nalini</span>
+                    </h1>
+                    <p class="text-lg text-gray-700 mb-6">
+                        Make Every Birthday Magical! 🎈✨ Planning a party? No more last-minute runs for decorations! We're your one-stop shop for all things party—kits, balloons, banners, and more!
+                    </p>
+                    <p class="text-md text-gray-600 mb-8">
+                        📍 Available right here in <strong class="font-semibold">Honer Aquantis</strong>! Order and get it delivered to your doorstep! We also offer complete party decor services.
+                    </p>
+                    <a href="#packages" class="bg-pink-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-pink-700 transition duration-300 inline-block">
+                        Explore Packages <i class="lucide ml-1">arrow-right</i>
+                    </a>
+                     <a href="#contact" class="ml-4 bg-white text-pink-600 border border-pink-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-pink-50 transition duration-300 inline-block mt-4 md:mt-0">
+                        Contact Us <i class="lucide ml-1">phone</i>
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                     <img src="https://placehold.co/500x400/fbcfe8/ec4899?text=Party+Fun!" alt="Party Decorations Illustration" class="rounded-lg shadow-xl">
+                </div>
+            </div>
+        </section>
+
+        <section id="packages" class="py-20 bg-white fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+                    <i class="lucide text-pink-500 mr-2">gift</i> Birthday Decor Packages
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="package-card-gradient border border-pink-100 rounded-xl shadow-lg p-6 flex flex-col item-card">
+                        <h3 class="text-xl font-semibold text-pink-700 mb-3">Standard Birthday Decor</h3>
+                        <p class="text-2xl font-bold text-gray-800 mb-4">₹5,000</p>
+                        <p class="text-gray-600 mb-4 text-sm">A perfect, hassle-free setup for a cozy home party!</p>
+                        <ul class="text-gray-700 space-y-2 text-sm flex-grow">
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Backdrop: 2m x 2m foil curtain/wall</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Balloons: ~50 latex + 5 foil</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Themed table setup (table not included)</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Birthday Star Accessory (Tiara/Cap etc.)</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Happy Birthday banner</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Balloon Stand Decor</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Tableware for 10 kids</li>
+                        </ul>
+                         <a href="#contact" class="mt-6 bg-pink-600 text-white text-center font-semibold py-2 px-4 rounded-lg shadow hover:bg-pink-700 transition duration-300 text-sm">Enquire Now</a>
+                    </div>
+
+                    <div class="package-card-gradient border border-pink-100 rounded-xl shadow-lg p-6 flex flex-col item-card">
+                        <h3 class="text-xl font-semibold text-pink-700 mb-3">Theme-Based Decor</h3>
+                        <p class="text-2xl font-bold text-gray-800 mb-4">₹6,000 onwards</p>
+                        <p class="text-gray-600 mb-4 text-sm">Transform your space! Choose from Unicorn, Mermaid, Cars, Mickey & more!</p>
+                        <ul class="text-gray-700 space-y-2 text-sm flex-grow">
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Includes <strong class="font-semibold">Standard Package</strong> items</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Customization to your chosen theme</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Themed balloons & accessories</li>
+                        </ul>
+                         <a href="#contact" class="mt-6 bg-pink-600 text-white text-center font-semibold py-2 px-4 rounded-lg shadow hover:bg-pink-700 transition duration-300 text-sm">Enquire Now</a>
+                    </div>
+
+                    <div class="package-card-gradient border border-pink-100 rounded-xl shadow-lg p-6 flex flex-col item-card">
+                        <h3 class="text-xl font-semibold text-pink-700 mb-3">Personalized Decor</h3>
+                        <p class="text-2xl font-bold text-gray-800 mb-4">₹7,000 onwards</p>
+                        <p class="text-gray-600 mb-4 text-sm">Make it truly unique with personalized elements!</p>
+                         <ul class="text-gray-700 space-y-2 text-sm flex-grow">
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Includes <strong class="font-semibold">Theme-Based Package</strong> items</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Custom name balloons</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Photo collage wall option</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Exclusive personalized props</li>
+                        </ul>
+                        <a href="#contact" class="mt-6 bg-pink-600 text-white text-center font-semibold py-2 px-4 rounded-lg shadow hover:bg-pink-700 transition duration-300 text-sm">Enquire Now</a>
+                    </div>
+
+                    <div class="package-card-gradient border border-pink-100 rounded-xl shadow-lg p-6 flex flex-col item-card">
+                        <h3 class="text-xl font-semibold text-pink-700 mb-3">Outdoor Luxury Decor</h3>
+                        <p class="text-2xl font-bold text-gray-800 mb-4">₹15,000 onwards</p>
+                        <p class="text-gray-600 mb-4 text-sm">Perfect for lawns, terraces, or open spaces!</p>
+                         <ul class="text-gray-700 space-y-2 text-sm flex-grow">
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Elegant ring backdrop with drapes</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> 100+ premium balloons</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Special outdoor props</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Decor for up to 2 tables (tables not included)</li>
+                            <li class="flex items-start"><i class="lucide text-green-500 mr-2 mt-1" style="font-size: 1rem;">check-circle</i> Customizable to theme</li>
+                        </ul>
+                         <a href="#contact" class="mt-6 bg-pink-600 text-white text-center font-semibold py-2 px-4 rounded-lg shadow hover:bg-pink-700 transition duration-300 text-sm">Enquire Now</a>
+                    </div>
+                </div>
+                 <p class="text-center mt-10 text-gray-600">We also cater to Baby Showers, Anniversaries, and other special occasions! <a href="#contact" class="text-pink-600 font-semibold hover:underline">Contact us</a> for custom quotes.</p>
+            </div>
+        </section>
+
+        <section id="gallery" class="py-20 bg-pink-50 fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+                   <i class="lucide text-pink-500 mr-2">image</i> Our Recent Work
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/fbcfe8/ec4899?text=Birthday+Setup+1" alt="Party Decor Example 1" class="w-full h-64 object-cover">
+                        <div class="p-4">
+                            <p class="text-gray-600 text-sm">Princess Theme Birthday</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/a5b4fc/4f46e5?text=Baby+Shower+Decor" alt="Party Decor Example 2" class="w-full h-64 object-cover">
+                         <div class="p-4">
+                            <p class="text-gray-600 text-sm">Elegant Baby Shower</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/fef08a/ca8a04?text=Anniversary+Special" alt="Party Decor Example 3" class="w-full h-64 object-cover">
+                         <div class="p-4">
+                            <p class="text-gray-600 text-sm">Golden Anniversary Setup</p>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/99f6e4/0d9488?text=Kids+Cars+Theme" alt="Party Decor Example 4" class="w-full h-64 object-cover">
+                         <div class="p-4">
+                            <p class="text-gray-600 text-sm">Cars Theme Party</p>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/fecaca/dc2626?text=Outdoor+Party" alt="Party Decor Example 5" class="w-full h-64 object-cover">
+                         <div class="p-4">
+                            <p class="text-gray-600 text-sm">Outdoor Celebration</p>
+                        </div>
+                    </div>
+                     <div class="bg-white rounded-lg shadow-lg overflow-hidden item-card">
+                        <img src="https://placehold.co/600x400/d8b4fe/9333ea?text=Unicorn+Magic" alt="Party Decor Example 6" class="w-full h-64 object-cover">
+                         <div class="p-4">
+                            <p class="text-gray-600 text-sm">Magical Unicorn Theme</p>
+                        </div>
+                    </div>
+                </div>
+                 <p class="text-center mt-10 text-gray-600">More photos coming soon! Follow us on social media for updates.</p>
+            </div>
+        </section>
+
+        <section id="store" class="py-20 bg-white fade-in-section">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-12">
+                    <i class="lucide text-pink-500 mr-2">shopping-bag</i> DIY Party Store
+                </h2>
+                 <p class="text-center text-gray-600 mb-10 max-w-2xl mx-auto">Grab individual items to add that extra sparkle to your celebration! Contact us to order.</p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Balloons" alt="Foil Balloons" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Foil Balloons (Themed)</h4>
+                        <p class="text-gray-600 text-sm mb-2">Various characters & numbers</p>
+                        <p class="text-pink-600 font-bold">Starting from ₹150</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Curtains" alt="Foil Curtains" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Foil Curtains</h4>
+                        <p class="text-gray-600 text-sm mb-2">Multiple colors available</p>
+                        <p class="text-pink-600 font-bold">₹200 per piece</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Poppers" alt="Confetti Poppers" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Confetti Poppers</h4>
+                         <p class="text-gray-600 text-sm mb-2">Add a pop of fun!</p>
+                        <p class="text-pink-600 font-bold">₹100 per piece</p>
+                    </div>
+                     <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Plates" alt="Themed Plates" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Themed Disposable Plates</h4>
+                         <p class="text-gray-600 text-sm mb-2">Pack of 10</p>
+                        <p class="text-pink-600 font-bold">₹250 per pack</p>
+                    </div>
+                     <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Banner" alt="Birthday Banner" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Happy Birthday Banner</h4>
+                         <p class="text-gray-600 text-sm mb-2">Various styles</p>
+                        <p class="text-pink-600 font-bold">Starting from ₹300</p>
+                    </div>
+                     <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Tiara" alt="Birthday Tiara" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Birthday Tiara/Sash</h4>
+                         <p class="text-gray-600 text-sm mb-2">For the star of the party</p>
+                        <p class="text-pink-600 font-bold">Starting from ₹150</p>
+                    </div>
+                     <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Candles" alt="Cake Candles" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">Cake Candles (Specialty)</h4>
+                         <p class="text-gray-600 text-sm mb-2">Numeric, Sparkler, Musical</p>
+                        <p class="text-pink-600 font-bold">Starting from ₹80</p>
+                    </div>
+                    <div class="border border-gray-200 rounded-lg p-4 text-center item-card bg-gray-50">
+                         <img src="https://placehold.co/300x200/fbcfe8/ec4899?text=Kit" alt="All-in-one Kit" class="w-full h-40 object-contain mb-4 rounded">
+                        <h4 class="font-semibold text-lg mb-1">All-in-One Birthday Kits</h4>
+                         <p class="text-gray-600 text-sm mb-2">Basic decor essentials</p>
+                        <p class="text-pink-600 font-bold">Starting from ₹1000</p>
+                    </div>
+                </div>
+                 <p class="text-center mt-10 text-gray-600">Note: This is just a sample. <a href="#contact" class="text-pink-600 font-semibold hover:underline">Contact us</a> for the full catalog and to place orders!</p>
+            </div>
+        </section>
+
+         <section id="contact" class="py-20 footer-gradient text-white fade-in-section">
+            <div class="container mx-auto px-6 text-center">
+                 <h2 class="text-3xl md:text-4xl font-bold mb-8">
+                    Let's Plan Your Perfect Party!
+                </h2>
+                <p class="text-lg mb-6 max-w-xl mx-auto">
+                    Ready to make your celebration unforgettable? Get in touch with Nalini to discuss your requirements, get custom quotes, or order DIY supplies!
+                </p>
+                 <p class="text-2xl font-semibold mb-4">
+                    <i class="lucide mr-2">message-circle</i> DM or Call: <a href="tel:+918800331737" class="hover:underline">+91 8800331737</a>
+                 </p>
+                 <p class="text-lg mb-8">
+                    <i class="lucide mr-2">map-pin</i> Serving Honer Aquantis & surrounding areas.
+                 </p>
+                 <a href="https://wa.me/918800331737?text=Hi%20Nalini,%20I'm%20interested%20in%20Party%20Pop%20Hub's%20services!" target="_blank" class="bg-white text-pink-600 font-semibold py-3 px-8 rounded-lg shadow-lg hover:bg-pink-50 transition duration-300 inline-block">
+                    Chat on WhatsApp <i class="lucide ml-1">send</i>
+                 </a>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-6">
+        <div class="container mx-auto px-6 text-center text-sm">
+            &copy; <span id="current-year"></span> Party Pop Hub by Nalini. All Rights Reserved. | Website by Gemini
         </div>
-    </section>
-    
-    <section id="packages">
-        <h2>Our Packages</h2>
-        <p><strong>🎊 Standard Birthday Decor - ₹5,000</strong></p>
-        <p>✅ 2m x 2m foil curtain or wall backdrop, ~50 latex balloons + 4-5 foil balloons, banner, balloon stand, table decor (table not included), tiara/googles/birthday cap for the kid, disposable plates & cups for 10 kids.</p>
-        
-        <p><strong>🎭 Theme-Based Birthday Decor - ₹6,000 onwards</strong></p>
-        <p>Includes everything in Standard, customized with themes like Unicorn, Mermaid, Minions, Mickey, etc.</p>
-        
-        <p><strong>📸 Personalized Birthday Decor - ₹7,000 onwards</strong></p>
-        <p>Includes everything in Theme-Based, plus photo collage, name balloons, custom props.</p>
-        
-        <p><strong>🌿 Outdoor Luxury Decor - ₹15,000 onwards</strong></p>
-        <p>Perfect for lawns or terraces: backdrop ring with drapes, ~100 balloons, birthday props, up to 2 tables decor (tables not included).</p>
-    </section>
-    
-    <section id="shop">
-        <h2>DIY Decor Items</h2>
-        <p>Browse our collection of decor kits and accessories for a perfect DIY party.</p>
-        <div class="shop">
-            <img src="item1.jpg" alt="DIY Decor 1">
-            <img src="item2.jpg" alt="DIY Decor 2">
-            <img src="item3.jpg" alt="DIY Decor 3">
-        </div>
-    </section>
-    
-    <footer>
-        Contact us at: +91 8800331737 | PartyPopHub@gmail.com
     </footer>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('.nav-link'); // Get all nav links (desktop and mobile)
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            // Toggle icon between menu and close
+            const icon = mobileMenuButton.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.textContent = 'menu';
+            } else {
+                icon.textContent = 'x'; // Lucide 'x' icon name
+            }
+        });
+
+        // --- Close Mobile Menu When Link Clicked ---
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenuButton.querySelector('i').textContent = 'menu'; // Reset icon
+                }
+                // Smooth scroll is handled by html class="scroll-smooth" and href="#section-id"
+            });
+        });
+
+        // --- Dynamic Year in Footer ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Active Navigation Link Highlighting on Scroll ---
+        const sections = document.querySelectorAll('section[id]'); // Get all sections with an ID
+        const headerHeight = document.querySelector('header').offsetHeight; // Get header height for offset
+
+        const activateNavLink = (id) => {
+            document.querySelectorAll('nav a.nav-link').forEach(link => {
+                link.classList.remove('nav-active'); // Remove active class from all
+                if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('nav-active'); // Add active class to the current one
+                }
+            });
+             // Also update mobile menu links if needed (optional)
+            document.querySelectorAll('#mobile-menu a.nav-link').forEach(link => {
+                 link.classList.remove('nav-active');
+                 if (link.getAttribute('href') === `#${id}`) {
+                    link.classList.add('nav-active');
+                 }
+            });
+        };
+
+        const observerOptions = {
+            root: null, // relative to the viewport
+            rootMargin: `-${headerHeight}px 0px 0px 0px`, // Adjust top margin for fixed header
+            threshold: 0.4 // Trigger when 40% of the section is visible
+        };
+
+        const sectionObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Find the link corresponding to the intersecting section
+                    activateNavLink(entry.target.id);
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            sectionObserver.observe(section);
+        });
+
+         // --- Fade-in Animation on Scroll ---
+         const fadeInSections = document.querySelectorAll('.fade-in-section');
+
+         const fadeInObserverOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the section is visible
+         };
+
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Already handled by CSS animation, but we can unobserve to prevent re-triggering
+                     // entry.target.classList.add('visible'); // Add a class if needed for JS hooks
+                    observer.unobserve(entry.target); // Stop observing once animation triggered
+                }
+            });
+        }, fadeInObserverOptions);
+
+         fadeInSections.forEach(section => {
+            fadeInObserver.observe(section);
+         });
+
+
+        // Initial active link check on page load (for cases where the page loads scrolled down)
+        // Find the first visible section on load
+        let initialActiveSection = 'about'; // Default
+        for(let section of sections) {
+             const rect = section.getBoundingClientRect();
+             // Check if the top of the section is within the viewport (considering header offset)
+             if (rect.top >= headerHeight && rect.top < window.innerHeight) {
+                 initialActiveSection = section.id;
+                 break;
+             }
+             // If no section top is visible, check if the bottom is visible (scrolled past)
+              else if (rect.bottom > headerHeight && rect.top < headerHeight) {
+                 initialActiveSection = section.id;
+                 // Don't break here, let it potentially find a section whose top is visible
+             }
+        }
+         activateNavLink(initialActiveSection);
+
+
+    </script>
+
 </body>
 </html>
